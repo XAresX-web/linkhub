@@ -5,7 +5,7 @@
 
   <img src="./public/banner.png" alt="preview" />
 
-<a href="https://linkhub.vercel.app/">Demo</a>
+<a href="https://linkhub-b.vercel.app/">Demo</a>
 
 </div>
 

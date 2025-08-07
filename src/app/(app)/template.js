@@ -61,7 +61,7 @@ export default async function AppTemplate({ children, ...rest }) {
                   className="text-center mt-4 flex gap-1 items-center justify-center"
                 >
                   <Image
-                    src={"/assets/logo.webp"}
+                    src={"/assets/logo.png"}
                     alt="logo"
                     height={40}
                     width={40}

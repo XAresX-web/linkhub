@@ -20,7 +20,7 @@ export default function Contact() {
     <div className="flex flex-col items-center min-h-screen py-2">
       <main className="flex flex-col items-center w-full flex-1 px-4 md:px-20 text-center">
         <Image
-          src={"/assets/logo.webp"}
+          src={"/assets/logo.png"}
           alt="banner image"
           height={400}
           width={400}

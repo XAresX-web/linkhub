@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-between items-center">
         {/* Logo and Name */}
         <div className="flex items-center text-blue-500 hover:text-blue-300 mb-1 md:mb-0">
-          <Image src={"/assets/logo.webp"} alt="logo" height={40} width={40} />
+          <Image src={"/assets/logo.png"} alt="logo" height={40} width={40} />
           <span className="font-extrabold text-2xl ml-2">LinkHub</span>
         </div>
 

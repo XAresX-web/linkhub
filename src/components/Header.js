@@ -16,7 +16,7 @@ export default async function Header() {
           href="/"
           className="flex items-center text-blue-500 hover:text-blue-300 hover:underline"
         >
-          <Image src={"/assets/logo.webp"} alt="logo" height={40} width={40} />
+          <Image src={"/assets/logo.png"} alt="logo" height={40} width={40} />
           <span className="font-extrabold text-2xl">LinkHub</span>
         </Link>
 

@@ -17,8 +17,11 @@ export default function About() {
         <p className="mt-4 text-lg md:text-xl text-gray-600">
           LinkHub is a dynamic and user-friendly platform designed to streamline
           your online presence. Inspired by actual{" "}
-          <a className="text-blue-500" href="https://linktr.ee/">
-            LinkHub
+          <a
+            className="text-blue-500"
+            href="https://biolink-ai-beta.vercel.app"
+          >
+            BioLink AI
           </a>
           , it allows users to create a personalized and easily shareable page
           that houses all their important links in one place.

@@ -3,25 +3,34 @@
 import Link from "next/link";
 import Image from "next/image";
 import {
-  FaTwitter,
   FaFacebookF,
   FaGithub,
   FaLinkedinIn,
   FaBriefcase,
 } from "react-icons/fa";
+import { AiFillInstagram } from "react-icons/ai";
+import { SiX } from "react-icons/si"; // Icono oficial de X
 
 export default function Contact() {
   const socialLinks = [
     {
-      href: "https://twitter.com/jeffjiang9",
-      icon: FaTwitter,
-      color: "from-blue-400 to-sky-500",
-      hoverColor: "hover:shadow-blue-400/25",
-      bgColor: "bg-blue-500/10",
-      name: "Twitter",
+      href: "https://x.com/linkhub_oficial?s=21",
+      icon: SiX, // Cambiado a X
+      color: "from-black to-gray-800", // Negros típicos de X
+      hoverColor: "hover:shadow-black/25",
+      bgColor: "bg-black/10",
+      name: "X",
     },
     {
-      href: "https://www.facebook.com/jeff.jiang.9",
+      href: "https://www.instagram.com/linkhub.app/",
+      icon: AiFillInstagram,
+      color: "from-pink-500 to-yellow-400", // Gradiente típico insta
+      hoverColor: "hover:shadow-pink-500/25",
+      bgColor: "bg-pink-500/10",
+      name: "Instagram",
+    },
+    {
+      href: "https://www.facebook.com/profile.php?id=61578992771811",
       icon: FaFacebookF,
       color: "from-blue-600 to-indigo-600",
       hoverColor: "hover:shadow-blue-600/25",
@@ -29,7 +38,7 @@ export default function Contact() {
       name: "Facebook",
     },
     {
-      href: "https://github.com/jeffjiang13",
+      href: "https://github.com/luissanchezz-dev",
       icon: FaGithub,
       color: "from-gray-700 to-gray-900",
       hoverColor: "hover:shadow-gray-700/25",
@@ -37,7 +46,7 @@ export default function Contact() {
       name: "GitHub",
     },
     {
-      href: "https://www.linkedin.com/in/jeffjiang13/",
+      href: "https://www.linkedin.com/in/luiss-sanchezz/",
       icon: FaLinkedinIn,
       color: "from-blue-500 to-blue-700",
       hoverColor: "hover:shadow-blue-500/25",
@@ -45,12 +54,12 @@ export default function Contact() {
       name: "LinkedIn",
     },
     {
-      href: "https://jeff-jiang.com",
+      href: "https://biolink-ai-beta.vercel.app/",
       icon: FaBriefcase,
       color: "from-purple-500 to-pink-500",
       hoverColor: "hover:shadow-purple-500/25",
       bgColor: "bg-purple-500/10",
-      name: "Portfolio",
+      name: "Otros proyectos",
     },
   ];
 
@@ -206,7 +215,7 @@ export default function Contact() {
                     <div className="space-y-3">
                       <div className="flex items-center space-x-3 text-sm text-slate-300">
                         <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                        <span>Email: contact@linkhub.com</span>
+                        <span>Email: linkhub.info@gmx.com</span>
                       </div>
                       <div className="flex items-center space-x-3 text-sm text-slate-300">
                         <span className="w-2 h-2 bg-blue-400 rounded-full"></span>

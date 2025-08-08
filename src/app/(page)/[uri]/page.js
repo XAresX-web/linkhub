@@ -104,18 +104,6 @@ export default async function UserPage({ params }) {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Botón para regresar al panel solo para dueño */}
-      {isOwner && (
-        <div className="p-4 bg-gray-100 flex justify-center">
-          <Link
-            href="/account" // Ajusta a la ruta de tu panel si es otra
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-          >
-            Regresar al panel
-          </Link>
-        </div>
-      )}
-
       <div
         className="h-36 bg-gray-400 bg-cover bg-center"
         style={

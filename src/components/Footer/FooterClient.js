@@ -1,10 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { SiX } from "react-icons/si";
 import { FaTwitter, FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 export default function FooterClient() {
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = () => {
+    if (!email || !email.includes("@")) {
+      alert("Por favor ingresa un email válido.");
+      return;
+    }
+    window.location.href = `mailto:linkhub.info@gmx.com?subject=Suscripción&body=Hola, me gustaría suscribirme con este correo: ${email}`;
+  };
   return (
     <footer className="relative mt-0 overflow-hidden">
       {/* Animated Background with Glass Effect */}
@@ -93,7 +104,7 @@ export default function FooterClient() {
                 { href: "/about", label: "Acerca de", icon: "ℹ️" },
                 { href: "/pricing", label: "Precios", icon: "💎" },
                 { href: "/contact", label: "Contacto", icon: "📧" },
-                { href: "/help", label: "Ayuda", icon: "❓" },
+                { href: "linkhub.info@gmx.com", label: "Ayuda", icon: "❓" },
               ].map((item) => (
                 <Link
                   key={item.href}
@@ -127,8 +138,13 @@ export default function FooterClient() {
                     type="email"
                     placeholder="tu@email.com"
                     className="bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all duration-300"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
-                  <button className="group relative px-4 py-2 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden">
+                  <button
+                    onClick={handleSubscribe}
+                    className="group relative px-4 py-2 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden"
+                  >
                     <span className="relative z-10 flex items-center justify-center space-x-2">
                       <span>Suscribirse</span>
                       <span className="group-hover:translate-x-1 transition-transform duration-300">
@@ -172,25 +188,25 @@ export default function FooterClient() {
           <div className="flex items-center space-x-4">
             {[
               {
-                href: "https://twitter.com/jeffjiang9",
-                icon: FaTwitter,
-                color: "from-blue-400 to-cyan-400",
-                hoverColor: "hover:shadow-blue-500/25",
+                href: "https://x.com/linkhub_oficial?s=21",
+                icon: SiX,
+                color: "from-black to-gray-800",
+                hoverColor: "hover:shadow-black/25",
               },
               {
-                href: "https://www.facebook.com/jeff.jiang.9",
+                href: "https://www.facebook.com/profile.php?id=61578992771811",
                 icon: FaFacebookF,
                 color: "from-blue-600 to-indigo-600",
                 hoverColor: "hover:shadow-blue-600/25",
               },
               {
-                href: "https://github.com/jeffjiang13",
+                href: "https://github.com/luissanchezz-dev",
                 icon: FaGithub,
                 color: "from-gray-400 to-gray-600",
                 hoverColor: "hover:shadow-gray-500/25",
               },
               {
-                href: "https://www.linkedin.com/in/jeffjiang13/",
+                href: "https://www.linkedin.com/in/luiss-sanchezz/",
                 icon: FaLinkedinIn,
                 color: "from-blue-500 to-blue-700",
                 hoverColor: "hover:shadow-blue-600/25",

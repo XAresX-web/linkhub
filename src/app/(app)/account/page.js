@@ -8,38 +8,50 @@ import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import cloneDeep from "clone-deep";
+import dynamic from "next/dynamic";
+
+const CopyProfileLink = dynamic(
+  () => import("@/components/buttons/CopyProfileLink"),
+  { ssr: false }
+);
+
 export const metadata = {
   title: "LinkHub | Cuenta",
   description:
     "Comparte tus enlaces, perfiles sociales, información de contacto y más en una sola página",
 };
+
 export default async function AccountPage({ searchParams }) {
   const session = await getServerSession(authOptions);
-  const desiredUsername = searchParams?.desiredUsername;
   if (!session) {
     return redirect("/");
   }
-  await mongoose.connect(process.env.MONGO_URI);
-  const page = await Page.findOne({ owner: session?.user?.email });
 
-  // Check if the page exists before trying to clone it
-  if (page) {
-    const leanPage = cloneDeep(page.toJSON());
-    leanPage._id = leanPage._id.toString();
-
-    return (
-      <>
-        <PageSettingsForm page={leanPage} user={session.user} />
-        <PageButtonsForm page={leanPage} user={session.user} />
-        <PageLinksForm page={leanPage} user={session.user} />
-      </>
-    );
+  // Conexión a MongoDB
+  if (!mongoose.connection.readyState) {
+    await mongoose.connect(process.env.MONGO_URI);
   }
 
-  // Return the UsernameForm if no page is found
+  const page = await Page.findOne({ owner: session.user.email });
+
+  if (!page) {
+    return <UsernameForm />;
+  }
+
+  const leanPage = cloneDeep(page.toJSON());
+  leanPage._id = leanPage._id.toString();
+
+  const username = leanPage.uri;
+
+  // Asegúrate de tener NEXT_PUBLIC_SITE_URL en .env.local y que termina sin "/"
+  const publicUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${username}`;
+
   return (
-    <div>
-      <UsernameForm desiredUsername={desiredUsername} />
-    </div>
+    <>
+      <PageSettingsForm page={leanPage} user={session.user} />
+      <PageButtonsForm page={leanPage} user={session.user} />
+      <PageLinksForm page={leanPage} user={session.user} />
+      <CopyProfileLink url={publicUrl} />
+    </>
   );
 }

@@ -29,7 +29,7 @@ export default async function AppTemplate({ children, ...rest }) {
   mongoose.connect(process.env.MONGO_URI);
   const page = await Page.findOne({ owner: session.user.email });
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={lato.className}>
         <Toaster />
         <main className="md:flex min-h-screen">

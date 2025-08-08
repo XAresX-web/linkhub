@@ -15,12 +15,18 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
+// Importamos el hook personalizado para el contexto
+import { useUser } from "@/providers/UserProvider";
+
 export default function PageSettingsForm({ page, user }) {
   const [bgType, setBgType] = useState(page.bgType);
   const [bgColor, setBgColor] = useState(page.bgColor);
   const [bgImage, setBgImage] = useState(page.bgImage);
   const [avatar, setAvatar] = useState(user?.image);
   const [isIconLoading, setIsIconLoading] = useState(true);
+
+  // Obtenemos setProfileImage del contexto mediante el hook
+  const { setProfileImage } = useUser();
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -31,7 +37,6 @@ export default function PageSettingsForm({ page, user }) {
   }, []);
 
   async function saveBaseSettings(formData) {
-    // Añadimos los valores de estado actual al formData antes de enviarlo
     formData.set("bgType", bgType);
     formData.set("bgColor", bgColor);
     formData.set("bgImage", bgImage);
@@ -55,6 +60,7 @@ export default function PageSettingsForm({ page, user }) {
     setIsIconLoading(true);
     await upload(ev, (url) => {
       setAvatar(url);
+      setProfileImage(url); // Actualizamos contexto para reflejar en Sidebar
       setIsIconLoading(false);
     });
   }

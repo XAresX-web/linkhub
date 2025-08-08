@@ -24,7 +24,7 @@ export default function PageLinksForm({ page, user }) {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsIconLoading(false);
-    }, 500); // Adjust the delay as needed
+    }, 500); // Ajusta el delay si quieres
 
     return () => clearTimeout(timeoutId);
   }, []);
@@ -35,50 +35,42 @@ export default function PageLinksForm({ page, user }) {
   }
 
   function addNewLink() {
-    setLinks((prev) => {
-      return [
-        ...prev,
-        {
-          key: Date.now().toString(),
-          title: "",
-          subtitle: "",
-          icon: "",
-          url: "",
-        },
-      ];
-    });
+    setLinks((prev) => [
+      ...prev,
+      {
+        key: Date.now().toString(),
+        title: "",
+        subtitle: "",
+        icon: "",
+        url: "",
+      },
+    ]);
   }
 
   function handleUpload(ev, linkKeyForUpload) {
     upload(ev, (uploadedImageUrl) => {
       setLinks((prevLinks) => {
-        const newLinks = [...prevLinks];
-        newLinks.forEach((link, index) => {
-          if (link.key === linkKeyForUpload) {
-            link.icon = uploadedImageUrl;
-          }
-        });
-        return newLinks;
+        return prevLinks.map((link) =>
+          link.key === linkKeyForUpload
+            ? { ...link, icon: uploadedImageUrl }
+            : link
+        );
       });
     });
   }
 
   function handleLinkChange(keyOfLinkToChange, prop, ev) {
-    setLinks((prev) => {
-      const newLinks = [...prev];
-      newLinks.forEach((link) => {
-        if (link.key === keyOfLinkToChange) {
-          link[prop] = ev.target.value;
-        }
-      });
-      return newLinks;
-    });
+    setLinks((prev) =>
+      prev.map((link) =>
+        link.key === keyOfLinkToChange
+          ? { ...link, [prop]: ev.target.value }
+          : link
+      )
+    );
   }
 
   function removeLink(linkKeyToRemove) {
-    setLinks((prevLinks) =>
-      [...prevLinks].filter((l) => l.key !== linkKeyToRemove)
-    );
+    setLinks((prevLinks) => prevLinks.filter((l) => l.key !== linkKeyToRemove));
   }
 
   return (
@@ -100,8 +92,9 @@ export default function PageLinksForm({ page, user }) {
           )}
           <span>Agregar nuevo</span>
         </button>
-        <div className="">
-          <ReactSortable handle={".handle"} list={links} setList={setLinks}>
+
+        <div>
+          <ReactSortable handle=".handle" list={links} setList={setLinks}>
             {links.map((l) => (
               <div key={l.key} className="mt-8 md:flex gap-6 items-center">
                 <div className="handle">
@@ -114,24 +107,26 @@ export default function PageLinksForm({ page, user }) {
                     />
                   )}
                 </div>
+
                 <div className="text-center">
                   <div className="bg-gray-300 relative aspect-square overflow-hidden w-16 h-16 inline-flex justify-center items-center rounded-full">
-                    {l.icon && (
+                    {l.icon &&
+                    typeof l.icon === "string" &&
+                    l.icon.startsWith("http") ? (
                       <Image
                         className="w-full h-full object-cover"
                         src={l.icon}
-                        alt={"icon"}
+                        alt="icon"
                         width={64}
                         height={64}
                       />
+                    ) : isIconLoading ? (
+                      <div className="animate-pulse bg-gray-400 w-4 h-4 rounded-full" />
+                    ) : (
+                      <FontAwesomeIcon size="xl" icon={faLink} />
                     )}
-                    {!l.icon &&
-                      (isIconLoading ? (
-                        <div className="animate-pulse bg-gray-400 w-4 h-4 rounded-full" />
-                      ) : (
-                        <FontAwesomeIcon size="xl" icon={faLink} />
-                      ))}
                   </div>
+
                   <div>
                     <input
                       onChange={(ev) => handleUpload(ev, l.key)}
@@ -164,6 +159,7 @@ export default function PageLinksForm({ page, user }) {
                     </button>
                   </div>
                 </div>
+
                 <div className="grow">
                   <label className="input-label">Título:</label>
                   <input
@@ -194,6 +190,7 @@ export default function PageLinksForm({ page, user }) {
             ))}
           </ReactSortable>
         </div>
+
         <div className="border-t pt-4 mt-8 max-w-xs mx-auto">
           <SubmitButton className="">
             {isIconLoading ? (

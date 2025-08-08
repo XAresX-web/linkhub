@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import { Lato } from "next/font/google";
 import "../../globals.css";
 
@@ -12,9 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body className={lato.className}>
-        <main>{children}</main>
-      </body>
+      <body className={lato.className}>{children}</body>
     </html>
   );
 }

@@ -23,6 +23,8 @@ import mongoose from "mongoose";
 import { btoa } from "next/dist/compiled/@edge-runtime/primitives";
 import Image from "next/image";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export const buttonsIcons = {
   email: faEnvelope,
@@ -49,9 +51,10 @@ function buttonLink(key, value) {
 
 export default async function UserPage({ params }) {
   const uri = params.uri;
-  mongoose.connect(process.env.MONGO_URI);
+
+  await mongoose.connect(process.env.MONGO_URI);
+
   const page = await Page.findOne({ uri });
-  // Check if the page was not found
   if (!page) {
     return (
       <div
@@ -73,8 +76,6 @@ export default async function UserPage({ params }) {
   }
 
   const user = await User.findOne({ email: page.owner });
-
-  // Optionally, also check if the user was not found
   if (!user) {
     return (
       <div
@@ -94,9 +95,27 @@ export default async function UserPage({ params }) {
       </div>
     );
   }
+
   await Event.create({ uri: uri, page: uri, type: "view" });
+
+  // Obtener sesión para mostrar el botón solo al dueño
+  const session = await getServerSession(authOptions);
+  const isOwner = session?.user?.email === page.owner;
+
   return (
     <div className="bg-white min-h-screen">
+      {/* Botón para regresar al panel solo para dueño */}
+      {isOwner && (
+        <div className="p-4 bg-gray-100 flex justify-center">
+          <Link
+            href="/account" // Ajusta a la ruta de tu panel si es otra
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          >
+            Regresar al panel
+          </Link>
+        </div>
+      )}
+
       <div
         className="h-36 bg-gray-400 bg-cover bg-center"
         style={
@@ -153,7 +172,7 @@ export default async function UserPage({ params }) {
           >
             <div className="relative -left-7 w-18">
               <div className="w-16 h-16 bg-blue-200 aspect-square relative flex items-center justify-center rounded-full border-2 border-gray-300">
-                {link.icon && (
+                {link.icon ? (
                   <Image
                     className="w-full h-full object-cover rounded-full"
                     src={link.icon}
@@ -161,15 +180,14 @@ export default async function UserPage({ params }) {
                     width={64}
                     height={64}
                   />
-                )}
-                {!link.icon && (
+                ) : (
                   <FontAwesomeIcon icon={faLink} className="w-8 h-8" />
                 )}
               </div>
             </div>
             <div className="flex items-center justify-center shrink grow-0 overflow-hidden">
-              <div className="">
-                <h3 className="">{link.title}</h3>
+              <div>
+                <h3>{link.title}</h3>
                 <p className="text-sm text-gray-400 overflow-hidden">
                   {link.subtitle}
                 </p>

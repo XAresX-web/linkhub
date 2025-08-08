@@ -92,7 +92,7 @@ export default function PageSettingsForm({ page, user }) {
                     ) : (
                       <FontAwesomeIcon icon={faImage} />
                     ),
-                    label: "Image",
+                    label: "Imagen",
                   },
                 ]}
                 onChange={(val) => setBgType(val)}

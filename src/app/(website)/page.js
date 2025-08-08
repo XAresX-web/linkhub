@@ -16,6 +16,7 @@ const imageUrls = [
   "/assets/cat.png",
   "/assets/model1.png",
 ];
+
 export default async function Home() {
   const session = await getServerSession(authOptions);
   return (
@@ -24,8 +25,8 @@ export default async function Home() {
         <div className="max-w-6xl mb-8 md:mb-0 md:mr-8">
           <h1 className="text-6xl font-bold">Todo en uno</h1>
           <h2 className="text-gray-500 text-xl mt-6 mb-4">
-            Comparte tus enlaces, perfiles de redes sociales, información de
-            contacto y más en una sola página
+            Comparte tus enlaces, perfiles de redes sociales, informaci&oacute;n
+            de contacto y m&aacute;s en una sola p&aacute;gina
           </h2>
           <HeroForm user={session?.user} />
         </div>
@@ -33,16 +34,19 @@ export default async function Home() {
       </section>
       <div className="mt-20 text-center max-w-5xl">
         <h1 className=" mb-5 text-5xl font-bold">
-          Nunca más tendrás que cambiar el enlace en tu biografía
+          Nunca m&aacute;s tendr&aacute;s que cambiar el enlace en tu
+          biograf&iacute;a
         </h1>
         <p>
-          En 2016, LinkHub solucionó el problema más molesto de las redes
-          sociales: tener solo un enlace en la biografía. LinkHub fue la primera
-          plataforma de "enlace en la biografía" creada para solucionar este
-          problema. Desde entonces, LinkHub se ha convertido en mucho más.
-          Permite a empresas y creadores sacar más provecho de sus redes
-          sociales, aumentar su número de seguidores, aceptar pagos fácilmente y
-          recuperar el control sobre cómo se descubre su contenido.
+          En 2016, LinkHub solucion&oacute; el problema m&aacute;s molesto de
+          las redes sociales: tener solo un enlace en la biograf&iacute;a.
+          LinkHub fue la primera plataforma de &quot;enlace en la
+          biograf&iacute;a&quot; creada para solucionar este problema. Desde
+          entonces, LinkHub se ha convertido en mucho m&aacute;s. Permite a
+          empresas y creadores sacar m&aacute;s provecho de sus redes sociales,
+          aumentar su n&uacute;mero de seguidores, aceptar pagos
+          f&aacute;cilmente y recuperar el control sobre c&oacute;mo se descubre
+          su contenido.
         </p>
       </div>
       <GridContainer />
@@ -51,10 +55,10 @@ export default async function Home() {
           Convierte tu LinkHub en tu propio mini-sitio web
         </h1>
         <p>
-          Se necesitan unos segundos para convertir tu biografía en un mini
-          sitio web, permitiendo a tus seguidores interactuar con tu contenido,
-          descubrirte en otras plataformas o comprarte y apoyarte con un solo
-          enlace simple.
+          Se necesitan unos segundos para convertir tu biograf&iacute;a en un
+          mini sitio web, permitiendo a tus seguidores interactuar con tu
+          contenido, descubrirte en otras plataformas o comprarte y apoyarte con
+          un solo enlace simple.
         </p>
       </div>
       <div className="mt-8 flex justify-center">
@@ -65,7 +69,7 @@ export default async function Home() {
           Empieza ahora
         </Link>
       </div>
-      <ImageGrid images={imageUrls} /> {/* Add the ImageGrid component */}
+      <ImageGrid images={imageUrls} />
     </main>
   );
 }

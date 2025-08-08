@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const ImageGrid = ({ images }) => {
   return (
@@ -9,6 +9,7 @@ const ImageGrid = ({ images }) => {
             src={image}
             alt={`image-${index}`}
             className="w-full h-auto rounded-md border hover:scale-105 shadow-lg"
+            loading="lazy"
           />
         </div>
       ))}

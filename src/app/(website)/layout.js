@@ -1,7 +1,7 @@
-import Header from "@/components/Header";
+import Header from "@/components/Header/HeaderWrapper";
 import { Lato } from "next/font/google";
 import "../globals.css";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Footer/FooterWrapper";
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata = {
@@ -13,12 +13,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body className={lato.className}>
-        <main>
+      <body className={`${lato.className} min-h-screen`}>
+        <main className="flex flex-col min-h-screen w-full">
           <Header />
-          <div className="max-w-6xl mx-auto p-6 flex flex-col min-h-screen">
-            {children}
-          </div>
+          {/* Contenedor sin límites ni márgenes */}
+          <div className="w-full flex-1 flex flex-col">{children}</div>
           <Footer />
         </main>
       </body>

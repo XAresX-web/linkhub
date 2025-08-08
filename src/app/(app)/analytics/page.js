@@ -20,9 +20,9 @@ import {
 } from "recharts";
 
 export const metadata = {
-  title: "LinkHub | Analytics",
+  title: "LinkHub | Analíticas",
   description:
-    "Share your links, social profiles, contact info and more on one page",
+    "Comparte tus enlaces, perfiles sociales, información de contacto y más en una sola página",
 };
 export default async function AnalyticsPage() {
   mongoose.connect(process.env.MONGO_URI);
@@ -71,7 +71,7 @@ export default async function AnalyticsPage() {
   return (
     <div>
       <SectionBox>
-        <h2 className="text-xl mb-6 text-center">Views</h2>
+        <h2 className="text-xl mb-6 text-center">Vistas</h2>
         <Chart
           data={groupedViews.map((o) => ({
             date: o._id,
@@ -80,7 +80,7 @@ export default async function AnalyticsPage() {
         />
       </SectionBox>
       <SectionBox>
-        <h2 className="text-xl mb-6 text-center">Clicks</h2>
+        <h2 className="text-xl mb-6 text-center">Clics</h2>
         {page.links.map((link) => (
           <div
             key={link.title}
@@ -112,7 +112,7 @@ export default async function AnalyticsPage() {
                   }
                 </div>
                 <div className="text-gray-400 text-xs uppercase font-bold">
-                  clicks today
+                  clics hoy
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default async function AnalyticsPage() {
                   {clicks.filter((c) => c.uri === link.url).length}
                 </div>
                 <div className="text-gray-400 text-xs uppercase font-bold">
-                  clicks total
+                  total de clics
                 </div>
               </div>
             </div>

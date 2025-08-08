@@ -12,39 +12,39 @@ import {
 const items = [
   {
     Icon: FaUserFriends,
-    title: "Grow your followers across all your social platforms",
+    title: "Haz crecer tus seguidores en todas tus plataformas sociales",
     description:
-      "Give your followers easy access to all of your content in one simple link. Now everything you do is just one tap away!",
+      "Ofrece a tus seguidores acceso fácil a todo tu contenido con un solo enlace. ¡Ahora todo está a un solo clic!",
   },
   {
     Icon: FaStore,
-    title: "Sell products & monetize your audience",
+    title: "Vende productos y monetiza tu audiencia",
     description:
-      "Sell your products, take payments, and even include “support me” links to let your audience support, tip or donate.",
+      "Vende tus productos, acepta pagos e incluso incluye enlaces de “Apóyame” para que tu audiencia pueda apoyarte, dar propinas o donar.",
   },
   {
     Icon: FaChartBar,
-    title: "Grow with in-depth user analytics",
+    title: "Crezca con análisis de usuarios en profundidad",
     description:
-      "Use powerful analytics to know what your followers are engaging with, and use the insights to grow your followers and business.",
+      "Utilice análisis potentes para saber con qué interactúan sus seguidores y utilice esa información para hacer crecer sus seguidores y su negocio.",
   },
   {
     Icon: FaGlobe,
-    title: "Create a custom mini-website in seconds",
+    title: "Crea un minisitio web personalizado en segundos",
     description:
-      "Create your own LinkHub in just seconds and customize it in a way that reflects your brand or style.",
+      "Crea tu propio LinkHub en solo unos segundos y personalízalo de manera que refleje tu marca o estilo.",
   },
   {
     Icon: FaQrcode,
-    title: "Bring your offline world online with QR codes",
+    title: "Lleva tu mundo offline al mundo online con códigos QR",
     description:
-      "Easily link from IRL – your product packaging, posters and flyers – to your online world with a simple QR code.",
+      "Conecte fácilmente desde la vida real (el empaque de su producto, sus carteles y folletos) a su mundo en línea con un simple código QR.",
   },
   {
     Icon: FaPlug,
-    title: "Integrate your LinkHub with your existing tech",
+    title: "Integre su LinkHub con su tecnología existente",
     description:
-      "LinkHub seamlessly connects to other platforms like Mailchimp, Vimeo, Zapier, Amazon, YouTube, Google Analytics, plus more!",
+      "LinkHub se conecta perfectamente a otras plataformas como Mailchimp, Vimeo, Zapier, Amazon, YouTube, Google Analytics y ¡muchas más!",
   },
 ];
 

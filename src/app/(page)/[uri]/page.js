@@ -66,7 +66,7 @@ export default async function UserPage({ params }) {
         <p
           style={{ fontSize: "24px", fontWeight: "bold", textAlign: "center" }}
         >
-          Page Not Found
+          Página no encontrada
         </p>
       </div>
     );
@@ -89,7 +89,7 @@ export default async function UserPage({ params }) {
         <p
           style={{ fontSize: "24px", fontWeight: "bold", textAlign: "center" }}
         >
-          User Not Found
+          Usuario no encontrado
         </p>
       </div>
     );

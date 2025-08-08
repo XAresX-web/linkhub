@@ -23,13 +23,13 @@ export default async function Header() {
         {/* Desktop Navigation Links - Centered */}
         <nav className="hidden sm:flex justify-center gap-10 text-slate-500 text-sm flex-grow font-bold">
           <Link href="/about" className="hover:underline">
-            About
+            Acerca de
           </Link>
           <Link href="/pricing" className="hover:underline">
-            Pricing
+            Precios
           </Link>
           <Link href="/contact" className="hover:underline">
-            Contact
+            Contacto
           </Link>
         </nav>
 
@@ -41,7 +41,7 @@ export default async function Header() {
                 className="flex items-center gap-2 border p-2 px-4 shadow rounded-md text-white bg-blue-500 hover:bg-blue-300 font-bold"
                 href="/account"
               >
-                Account
+                Cuenta
               </Link>
               <LogoutButton />
             </>
@@ -50,7 +50,7 @@ export default async function Header() {
               className="flex items-center gap-2 border p-2 px-4 shadow rounded-md text-white bg-blue-500 hover:bg-blue-300 font-bold"
               href="/login"
             >
-              Sign In
+              Iniciar sesión
             </Link>
           )}
         </div>

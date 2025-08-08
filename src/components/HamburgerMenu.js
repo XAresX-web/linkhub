@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import LogoutButton from "@/components/buttons/LogoutButton";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { useState } from "react";
+import Link from "next/link";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const HamburgerMenu = ({ session }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,9 +20,27 @@ const HamburgerMenu = ({ session }) => {
       {isOpen && (
         <div className="absolute top-14 left-0 w-full bg-white shadow-md z-50">
           <nav className="flex flex-col items-center gap-4 py-4">
-            <Link href="/about" className="hover:underline" onClick={toggleMenu}>About</Link>
-            <Link href="/pricing" className="hover:underline" onClick={toggleMenu}>Pricing</Link>
-            <Link href="/contact" className="hover:underline" onClick={toggleMenu}>Contact</Link>
+            <Link
+              href="/about"
+              className="hover:underline"
+              onClick={toggleMenu}
+            >
+              Acerca de
+            </Link>
+            <Link
+              href="/pricing"
+              className="hover:underline"
+              onClick={toggleMenu}
+            >
+              Precios
+            </Link>
+            <Link
+              href="/contact"
+              className="hover:underline"
+              onClick={toggleMenu}
+            >
+              Contacto
+            </Link>
             {!!session ? (
               <>
                 <Link
@@ -30,7 +48,7 @@ const HamburgerMenu = ({ session }) => {
                   className="flex items-center gap-2 border p-2 px-4 shadow rounded-md text-white bg-blue-500 hover:bg-blue-300 font-bold"
                   onClick={toggleMenu}
                 >
-                  Account
+                  Cuenta
                 </Link>
                 <LogoutButton />
               </>
@@ -40,7 +58,7 @@ const HamburgerMenu = ({ session }) => {
                 className="flex items-center gap-2 border p-2 px-4 shadow rounded-md text-white bg-blue-500 hover:bg-blue-300 font-bold"
                 onClick={toggleMenu}
               >
-                Sign In
+                Iniciar sesión
               </Link>
             )}
           </nav>

@@ -1,33 +1,21 @@
-import toast from "react-hot-toast";
-
-export async function upload(ev, callbackFn) {
+export async function upload(ev, onUploaded) {
   const file = ev.target.files?.[0];
+  if (!file) return;
 
-  if (file) {
+  const formData = new FormData();
+  formData.append("file", file);
 
-    const uploadPromise = new Promise((resolve, reject) => {
-      const data = new FormData;
-      data.set('file', file);
-      fetch('/api/upload', {
-        method: 'POST',
-        body: data,
-      }).then(response => {
-        if (response.ok) {
-          response.json().then(link => {
-            callbackFn(link);
-            resolve(link);
-          });
-        } else {
-          reject();
-        }
-      });
+  try {
+    const res = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
     });
 
-    await toast.promise(uploadPromise, {
-      loading: 'Uploading...',
-      success: 'Uploaded!',
-      error: 'Upload error!',
-    });
+    if (!res.ok) throw new Error("Error subiendo archivo");
 
+    const data = await res.json();
+    onUploaded(data.url);
+  } catch (error) {
+    console.error("Error al subir archivo:", error);
   }
 }

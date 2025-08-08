@@ -7,12 +7,12 @@ const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 export const metadata = {
   title: "LinkHub",
   description:
-    "Share your links, social profiles, contact info and more on one page",
+    "Comparte tus enlaces, perfiles sociales, información de contacto y más en una sola página",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={lato.className}>
         <main>
           <Header />

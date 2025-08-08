@@ -22,45 +22,39 @@ export default async function Home() {
     <main>
       <section className="pt-32 flex flex-wrap md:flex-nowrap justify-center items-center">
         <div className="max-w-6xl mb-8 md:mb-0 md:mr-8">
-          <h1 className="text-6xl font-bold">Everything in one</h1>
+          <h1 className="text-6xl font-bold">Todo en uno</h1>
           <h2 className="text-gray-500 text-xl mt-6 mb-4">
-            Share your links, social media profiles, contact info and more on
-            one page
+            Comparte tus enlaces, perfiles de redes sociales, información de
+            contacto y más en una sola página
           </h2>
           <HeroForm user={session?.user} />
         </div>
         <Carousel images={imageUrls} />
-
-        {/* <Image
-          src={'/assets/preview.png'}
-          alt="banner image"
-          width={290} // Adjust the width as needed
-          height={290} // Adjust the height to maintain the aspect ratio
-          className="rounded-2xl border-2 shadow-gray-500/20 shadow-lg hover:shadow-2xl transition-shadow"
-        /> */}
       </section>
       <div className="mt-20 text-center max-w-5xl">
         <h1 className=" mb-5 text-5xl font-bold">
-          You never have to change the link in your bio again
+          Nunca más tendrás que cambiar el enlace en tu biografía
         </h1>
         <p>
-          Back in 2016 LinkHub solved social media’s most annoying problem: only
-          having one link in your bio. LinkHub was the first ‘link in bio’
-          platform made to solve this problem. LinkHub has since become so much
-          more. Allowing businesses or creators to get more out of their social
-          media, grow their following, easily take payments and take back
-          control of how your content is discovered.
+          En 2016, LinkHub solucionó el problema más molesto de las redes
+          sociales: tener solo un enlace en la biografía. LinkHub fue la primera
+          plataforma de "enlace en la biografía" creada para solucionar este
+          problema. Desde entonces, LinkHub se ha convertido en mucho más.
+          Permite a empresas y creadores sacar más provecho de sus redes
+          sociales, aumentar su número de seguidores, aceptar pagos fácilmente y
+          recuperar el control sobre cómo se descubre su contenido.
         </p>
       </div>
       <GridContainer />
       <div className="mt-20 text-center max-w-5xl">
         <h1 className=" mb-5 text-5xl font-bold">
-          Turn your Link In Bio into your own mini-website
+          Convierte tu LinkHub en tu propio mini-sitio web
         </h1>
         <p>
-          It takes seconds to turn your bio into a mini website, allowing your
-          followers to engage with your content, discover you on other platforms
-          or purchase and support you with just one simple link.
+          Se necesitan unos segundos para convertir tu biografía en un mini
+          sitio web, permitiendo a tus seguidores interactuar con tu contenido,
+          descubrirte en otras plataformas o comprarte y apoyarte con un solo
+          enlace simple.
         </p>
       </div>
       <div className="mt-8 flex justify-center">
@@ -68,7 +62,7 @@ export default async function Home() {
           href="/account"
           className="flex items-center gap-2 border p-2 px-3 shadow rounded-md text-white bg-blue-500 hover:bg-blue-300 font-bold"
         >
-          Start now
+          Empieza ahora
         </Link>
       </div>
       <ImageGrid images={imageUrls} /> {/* Add the ImageGrid component */}

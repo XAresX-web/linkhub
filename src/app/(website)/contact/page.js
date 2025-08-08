@@ -26,7 +26,7 @@ export default function Contact() {
           width={400}
         />
         <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-8">
-          Get in Touch
+          Contáctanos
         </h1>
 
         <div className="flex flex-wrap justify-center gap-6 text-gray-600">

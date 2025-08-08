@@ -12,23 +12,22 @@ export default function Pricing() {
     <div className="py-8 px-4">
       <main className="max-w-6xl mb-20 mx-auto mt-10">
         <h1 className="text-center text-4xl font-bold text-gray-800 mb-20">
-          Pricing Plans
+          Gratis para siempre
         </h1>
         <div className="flex flex-wrap justify-center gap-10">
           {/* Free Plan */}
           <div className="w-full max-w-sm p-6 border rounded-lg shadow-md hover:shadow-lg transition-shadow bg-white">
-            <h2 className="text-2xl font-semibold text-center mb-4">Free</h2>
             <ul className="mb-6">
-              <li className="mb-2">Basic Link Management</li>
-              <li className="mb-2">Custom Profile URL</li>
-              <li className="mb-2">Basic Analytics</li>
+              <li className="mb-2">Gestión básica de enlaces</li>
+              <li className="mb-2">URL de perfil personalizado</li>
+              <li className="mb-2">Análisis básico</li>
             </ul>
             <div className="text-center">
               <Link
                 href="/account"
                 className="inline-block bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-200 transition-colors"
               >
-                Get Started
+                Empezar
               </Link>
             </div>
           </div>

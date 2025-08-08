@@ -9,9 +9,9 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import cloneDeep from "clone-deep";
 export const metadata = {
-  title: "LinkHub | Account",
+  title: "LinkHub | Cuenta",
   description:
-    "Share your links, social profiles, contact info and more on one page",
+    "Comparte tus enlaces, perfiles sociales, información de contacto y más en una sola página",
 };
 export default async function AccountPage({ searchParams }) {
   const session = await getServerSession(authOptions);

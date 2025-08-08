@@ -9,7 +9,6 @@ import {
   faImage,
   faPalette,
   faSave,
-  faUpload,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
@@ -26,28 +25,40 @@ export default function PageSettingsForm({ page, user }) {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsIconLoading(false);
-    }, 500); // Adjust the delay as needed
+    }, 500);
 
     return () => clearTimeout(timeoutId);
   }, []);
 
   async function saveBaseSettings(formData) {
+    // Añadimos los valores de estado actual al formData antes de enviarlo
+    formData.set("bgType", bgType);
+    formData.set("bgColor", bgColor);
+    formData.set("bgImage", bgImage);
+    formData.set("avatar", avatar);
+
     const result = await savePageSettings(formData);
     if (result) {
-      toast.success("Saved!");
+      toast.success("Guardado!");
     }
   }
 
   async function handleCoverImageChange(ev) {
-    await upload(ev, (link) => {
-      setBgImage(link);
+    setIsIconLoading(true);
+    await upload(ev, (url) => {
+      setBgImage(url);
+      setIsIconLoading(false);
     });
   }
+
   async function handleAvatarImageChange(ev) {
-    await upload(ev, (link) => {
-      setAvatar(link);
+    setIsIconLoading(true);
+    await upload(ev, (url) => {
+      setAvatar(url);
+      setIsIconLoading(false);
     });
   }
+
   return (
     <div>
       <SectionBox>
@@ -89,26 +100,26 @@ export default function PageSettingsForm({ page, user }) {
               {bgType === "color" && (
                 <div className="bg-gray-200 shadow text-gray-700 p-2 mt-2 rounded-md">
                   <div className="flex gap-2 justify-center">
-                    <span>Background color:</span>
+                    <span>Color de fondo:</span>
                     <input
                       type="color"
                       name="bgColor"
                       onChange={(ev) => setBgColor(ev.target.value)}
-                      defaultValue={page.bgColor}
+                      value={bgColor}
                     />
                   </div>
                 </div>
               )}
               {bgType === "image" && (
                 <div className="flex justify-center">
-                  <label className="bg-white shadow px-4 py-2 mt-2 flex gap-2 rounded-md hover:bg-gray-200">
+                  <label className="bg-white shadow px-4 py-2 mt-2 flex gap-2 rounded-md hover:bg-gray-200 cursor-pointer">
                     <input type="hidden" name="bgImage" value={bgImage} />
                     <input
                       type="file"
                       onChange={handleCoverImageChange}
                       className="hidden"
                     />
-                    <div className="flex gap-2 items-center cursor-pointer">
+                    <div className="flex gap-2 items-center">
                       {isIconLoading ? (
                         <div className="animate-pulse bg-gray-400 w-4 h-4 rounded-full" />
                       ) : (
@@ -117,22 +128,24 @@ export default function PageSettingsForm({ page, user }) {
                           className="text-gray-700"
                         />
                       )}
-                      <span>Change image</span>
+                      <span>Cargar imagen</span>
                     </div>
                   </label>
                 </div>
               )}
             </div>
           </div>
+
           <div className="flex justify-center -mb-12">
             <div className="relative -top-8 w-[128px] h-[128px]">
               <div className="overflow-hidden h-full rounded-full border-4 border-white shadow shadow-black/50">
                 <Image
                   className="w-full h-full object-cover"
-                  src={avatar}
+                  src={avatar || "/default-avatar.png"}
                   alt={"avatar"}
                   width={128}
                   height={128}
+                  unoptimized
                 />
               </div>
               <label
@@ -154,9 +167,10 @@ export default function PageSettingsForm({ page, user }) {
               <input type="hidden" name="avatar" value={avatar} />
             </div>
           </div>
+
           <div className="p-0">
             <label className="input-label" htmlFor="nameIn">
-              Display name
+              Nombre para mostrar
             </label>
             <input
               className="rounded-md"
@@ -164,11 +178,11 @@ export default function PageSettingsForm({ page, user }) {
               id="nameIn"
               name="displayName"
               defaultValue={page.displayName}
-              placeholder="Your name"
+              placeholder="Tu nombre"
             />
 
             <label className="input-label" htmlFor="locationIn">
-              Location
+              Ubicación
             </label>
             <input
               className="rounded-md"
@@ -176,26 +190,28 @@ export default function PageSettingsForm({ page, user }) {
               id="locationIn"
               name="location"
               defaultValue={page.location}
-              placeholder="Your location"
+              placeholder="Tu ubicación"
             />
             <label className="input-label" htmlFor="bioIn">
-              Bio
+              Biografía
             </label>
             <textarea
               className="rounded-md"
               name="bio"
               defaultValue={page.bio}
               id="bioIn"
-              placeholder="Your bio goes here..."
+              placeholder="Tu biografía va aquí..."
             />
             <div className="max-w-[200px] mx-auto mt-8 max-w-xs">
               <SubmitButton>
                 {isIconLoading ? (
                   <div className="animate-pulse bg-gray-400 w-4 h-4 rounded-full" />
                 ) : (
-                  <FontAwesomeIcon icon={faSave} />
+                  <>
+                    <FontAwesomeIcon icon={faSave} />
+                    <span>Guardar</span>
+                  </>
                 )}
-                <span>Save</span>
               </SubmitButton>
             </div>
           </div>

@@ -31,7 +31,7 @@ export default function PageLinksForm({ page, user }) {
 
   async function save() {
     await savePageLinks(links);
-    toast.success("Saved!");
+    toast.success("Guardado!");
   }
 
   function addNewLink() {
@@ -84,35 +84,35 @@ export default function PageLinksForm({ page, user }) {
   return (
     <SectionBox>
       <form action={save}>
-        <h2 className="text-2xl font-bold mb-4">Links</h2>
+        <h2 className="text-2xl font-bold mb-4">Enlaces</h2>
         <button
           onClick={addNewLink}
           type="button"
           className="text-blue-500 text-lg flex gap-2 items-center cursor-pointer"
         >
           {isIconLoading ? (
-                  <div className="animate-pulse bg-gray-300 w-4 h-4 rounded-full" />
-                ) : (
-          <FontAwesomeIcon
-            className="bg-blue-500 text-white p-1 rounded-full aspect-square"
-            icon={faPlus}
-          />
+            <div className="animate-pulse bg-gray-300 w-4 h-4 rounded-full" />
+          ) : (
+            <FontAwesomeIcon
+              className="bg-blue-500 text-white p-1 rounded-full aspect-square"
+              icon={faPlus}
+            />
           )}
-          <span>Add new</span>
+          <span>Agregar nuevo</span>
         </button>
         <div className="">
           <ReactSortable handle={".handle"} list={links} setList={setLinks}>
             {links.map((l) => (
               <div key={l.key} className="mt-8 md:flex gap-6 items-center">
                 <div className="handle">
-                {isIconLoading ? (
-                  <div className="animate-pulse bg-gray-300 w-4 h-4 rounded-full" />
-                ) : (
-                  <FontAwesomeIcon
-                    className="text-gray-500 mr-2 cursor-ns-resize"
-                    icon={faGripLines}
-                  />
-                )}
+                  {isIconLoading ? (
+                    <div className="animate-pulse bg-gray-300 w-4 h-4 rounded-full" />
+                  ) : (
+                    <FontAwesomeIcon
+                      className="text-gray-500 mr-2 cursor-ns-resize"
+                      icon={faGripLines}
+                    />
+                  )}
                 </div>
                 <div className="text-center">
                   <div className="bg-gray-300 relative aspect-square overflow-hidden w-16 h-16 inline-flex justify-center items-center rounded-full">
@@ -125,11 +125,12 @@ export default function PageLinksForm({ page, user }) {
                         height={64}
                       />
                     )}
-                    {!l.icon && (isIconLoading ? (
-                      <div className="animate-pulse bg-gray-400 w-4 h-4 rounded-full" />
-                    ) : (
-                      <FontAwesomeIcon size="xl" icon={faLink} />
-                    ))}
+                    {!l.icon &&
+                      (isIconLoading ? (
+                        <div className="animate-pulse bg-gray-400 w-4 h-4 rounded-full" />
+                      ) : (
+                        <FontAwesomeIcon size="xl" icon={faLink} />
+                      ))}
                   </div>
                   <div>
                     <input
@@ -147,7 +148,7 @@ export default function PageLinksForm({ page, user }) {
                       ) : (
                         <FontAwesomeIcon icon={faCloudArrowUp} />
                       )}
-                      <span>Change icon</span>
+                      <span>Cargar icono</span>
                     </label>
                     <button
                       onClick={() => removeLink(l.key)}
@@ -159,12 +160,12 @@ export default function PageLinksForm({ page, user }) {
                       ) : (
                         <FontAwesomeIcon icon={faTrash} />
                       )}
-                      <span>Remove this link</span>
+                      <span>Eliminar enlace</span>
                     </button>
                   </div>
                 </div>
                 <div className="grow">
-                  <label className="input-label">Title:</label>
+                  <label className="input-label">Título:</label>
                   <input
                     className="rounded-md"
                     value={l.title}
@@ -172,7 +173,7 @@ export default function PageLinksForm({ page, user }) {
                     type="text"
                     placeholder="title"
                   />
-                  <label className="input-label">Subtitle:</label>
+                  <label className="input-label">Subtítulo:</label>
                   <input
                     className="rounded-md"
                     value={l.subtitle}
@@ -200,7 +201,7 @@ export default function PageLinksForm({ page, user }) {
             ) : (
               <FontAwesomeIcon icon={faSave} />
             )}
-            <span>Save</span>
+            <span>Guardar</span>
           </SubmitButton>
         </div>
       </form>

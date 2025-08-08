@@ -30,13 +30,13 @@ import toast from "react-hot-toast";
 export const allButtons = [
   {
     key: "email",
-    label: "e-mail",
+    label: "Correo",
     icon: faEnvelope,
     placeholder: "test@example.com",
   },
   {
     key: "mobile",
-    label: "mobile",
+    label: "Móvil",
     icon: faMobile,
     placeholder: "+46 123 123 123",
   },

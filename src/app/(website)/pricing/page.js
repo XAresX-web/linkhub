@@ -125,7 +125,7 @@ export default function Pricing() {
                 {/* CTA Button */}
                 <div className="text-center">
                   <Link
-                    href="/account"
+                    href="/login"
                     className="group/btn relative inline-flex items-center justify-center w-full px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-2xl shadow-lg hover:shadow-pink-500/25 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
                   >
                     <span className="relative z-10 flex items-center space-x-2">
@@ -168,9 +168,12 @@ export default function Pricing() {
           {/* Bottom Section */}
           <div className="text-center mt-16 animate-fade-in-up delay-500">
             <p className="text-gray-400 mb-4">¿Necesitas más funciones?</p>
-            <button className="text-pink-400 hover:text-pink-300 font-medium transition-colors underline decoration-pink-400/30 hover:decoration-pink-300/50">
-              Contáctanos para planes empresariales →
-            </button>
+            <a
+              href="mailto:linkhub.info@gmx.com"
+              className="text-pink-400 hover:text-pink-300 font-medium transition-colors underline decoration-pink-400/30 hover:decoration-pink-300/50 cursor-pointer inline-block"
+            >
+              Contáctanos para atención personalizada →
+            </a>
           </div>
         </main>
       </div>

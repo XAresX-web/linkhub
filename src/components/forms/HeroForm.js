@@ -209,7 +209,8 @@ export default function HeroForm({ user }) {
                 disabled={isLoading || username.length === 0}
                 className={`
         relative overflow-hidden
-        px-6 h-full  /* altura completa del contenedor */
+        px-3 sm:px-6 h-full  /* altura completa del contenedor */
+        max-w-xs sm:max-w-full
         font-bold text-base
         bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700
         text-white rounded-r-3xl
@@ -327,7 +328,7 @@ export default function HeroForm({ user }) {
           ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
         `}
         >
-          <p className="text-gray-600 text-sm">
+          <p className="text-gray-800 text-sm">
             🚀 <strong>Gratis para siempre</strong> • ⚡{" "}
             <strong>Configuración en 30 segundos</strong> • 🎨{" "}
             <strong>Diseños profesionales</strong>

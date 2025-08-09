@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -12,6 +13,7 @@ import { AiFillInstagram } from "react-icons/ai";
 import { SiX } from "react-icons/si"; // Icono oficial de X
 
 export default function Contact() {
+  const [isOpen, setIsOpen] = useState(false);
   const socialLinks = [
     {
       href: "https://x.com/linkhub_oficial?s=21",
@@ -178,7 +180,11 @@ export default function Contact() {
                       ¿Tienes una pregunta específica? Nos encantaría escucharte
                       y ayudarte con lo que necesites.
                     </p>
-                    <button className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-xl font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/25">
+                    {/* Aquí el botón abre el modal */}
+                    <button
+                      onClick={() => setIsOpen(true)}
+                      className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-xl font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/25"
+                    >
                       Abrir Formulario de Contacto
                     </button>
                   </div>
@@ -227,13 +233,47 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* Aquí agregamos el Modal */}
+            {isOpen && (
+              <div
+                className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+                onClick={() => setIsOpen(false)} // Cierra modal al clicar fondo
+              >
+                <div
+                  className="bg-white rounded-xl max-w-3xl w-full p-6 relative"
+                  onClick={(e) => e.stopPropagation()} // Previene cierre si clicas dentro del modal
+                >
+                  <button
+                    className="absolute top-3 right-3 text-gray-600 hover:text-gray-900"
+                    onClick={() => setIsOpen(false)}
+                    aria-label="Cerrar modal"
+                  >
+                    <SiX size={24} />
+                  </button>
+
+                  {/* Cambia la URL por la de tu Google Form */}
+                  <iframe
+                    src="<iframe src=https://docs.google.com/forms/d/e/1FAIpQLSe9zAcUx-5Ooz2d_zdwTPg7Jdt2nCsojLw4xIXZjVPXHxI-iQ/viewform?embedded=true"
+                    width="100"
+                    height="600"
+                    frameborder="0"
+                    marginheight="0"
+                    marginwidth="0"
+                    title="Formulario de Contacto"
+                  >
+                    Cargando…
+                  </iframe>
+                </div>
+              </div>
+            )}
+
             {/* Bottom CTA */}
             <div className="mt-16 animate-fade-in-up delay-900">
               <p className="text-slate-400 mb-6">
-                ¿Listo para comenzar tu journey digital?
+                ¿Listo para comenzar tu viaje digital?
               </p>
               <Link
-                href="/"
+                href="/login"
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-indigo-500 text-white px-8 py-4 rounded-2xl font-bold shadow-lg hover:shadow-blue-500/25 transition-all duration-300 hover:scale-[1.02] group"
               >
                 <span>🚀 Crear Mi LinkHub</span>

@@ -174,10 +174,10 @@ export default function LoginPage() {
             <p className="text-slate-400 text-sm">
               ¿Primera vez aquí?{" "}
               <a
-                href="/signup"
+                href="/login"
                 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 font-medium hover:from-blue-300 hover:to-cyan-300 transition-all duration-300"
               >
-                Crea tu cuenta gratis
+                Inicia sesión ¡es gratis!
               </a>
             </p>
           </div>

@@ -59,7 +59,7 @@ export default function FooterClient() {
                   LinkHub
                 </h3>
                 <p className="text-gray-400 text-sm mt-1 group-hover:text-gray-300 transition-colors duration-300">
-                  Conecta todo en un lugar ✨
+                  Conecta todo en un solo lugar ✨
                 </p>
               </div>
             </div>

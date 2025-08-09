@@ -1,11 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-
+import { signOut } from "next-auth/react";
 // Componente LogoutButton simulado para el ejemplo
 const LogoutButton = () => (
   <button
+    onClick={() => signOut({ callbackUrl: "/" })}
     className="
-    group relative overflow-hidden px-6 py-3 rounded-xl font-medium
+    group relative overflow-hidden flex items-center justify-center
+    w-full px-6 py-3 rounded-xl font-medium
     bg-gradient-to-r from-red-500/20 to-pink-500/20 
     hover:from-red-500/30 hover:to-pink-500/30
     border border-red-500/20 hover:border-red-500/30

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -186,8 +187,18 @@ const GridItem = ({
           ${iconColor}
         `}
         >
-          <span>Descubrir más</span>
-          <FaArrowRight className="ml-2 text-xs group-hover:translate-x-1 transition-transform duration-300" />
+          <Link
+            href="/about"
+            className={`
+    flex items-center text-xs font-medium mt-4 pt-4
+    border-t border-white/10 transition-all duration-300
+    ${isHovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-2"}
+    ${iconColor}
+  `}
+          >
+            <span>Descubrir más</span>
+            <FaArrowRight className="ml-2 text-xs group-hover:translate-x-1 transition-transform duration-300" />
+          </Link>
         </div>
       </div>
     </div>
@@ -222,7 +233,7 @@ const GridContainer = () => {
             mb-4 animate-fade-in
           "
           >
-            LinkHub Features
+            Beneficios de LinkHub
           </h1>
           <p
             className="

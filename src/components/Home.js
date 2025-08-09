@@ -227,7 +227,7 @@ export default function Home({ session }) {
           {/* Enhanced CTA Button */}
           <div className="mt-12 animate-fade-in-up animation-delay-800">
             <Link
-              href="/account"
+              href="/login"
               className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             >
               {/* Button Background */}

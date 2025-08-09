@@ -44,7 +44,7 @@ export default function HeaderClient({ session }) {
                   LinkHub
                 </span>
                 <span className="text-xs text-gray-600/70 font-medium -mt-1 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  Connect Everything
+                  Conecta todo
                 </span>
               </div>
             </Link>

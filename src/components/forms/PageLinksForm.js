@@ -167,7 +167,7 @@ export default function PageLinksForm({ page, user }) {
                     value={l.title}
                     onChange={(ev) => handleLinkChange(l.key, "title", ev)}
                     type="text"
-                    placeholder="title"
+                    placeholder="título"
                   />
                   <label className="input-label">Subtítulo:</label>
                   <input
@@ -175,7 +175,7 @@ export default function PageLinksForm({ page, user }) {
                     value={l.subtitle}
                     onChange={(ev) => handleLinkChange(l.key, "subtitle", ev)}
                     type="text"
-                    placeholder="subtitle (optional)"
+                    placeholder="subtítulo (opcional)"
                   />
                   <label className="input-label">URL:</label>
                   <input
@@ -183,7 +183,7 @@ export default function PageLinksForm({ page, user }) {
                     value={l.url}
                     onChange={(ev) => handleLinkChange(l.key, "url", ev)}
                     type="text"
-                    placeholder="url"
+                    placeholder="enlace"
                   />
                 </div>
               </div>

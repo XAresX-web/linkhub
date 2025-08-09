@@ -33,7 +33,7 @@ export default function LoginPage() {
                 {/* Welcome Badge */}
                 <div className="inline-block mb-6">
                   <span className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-400/30 text-blue-200 text-sm font-medium backdrop-blur-sm">
-                    👋 Bienvenido de vuelta
+                    <span className="wave-hand">👋</span> Bienvenido de vuelta
                   </span>
                 </div>
 
@@ -184,6 +184,36 @@ export default function LoginPage() {
         </div>
 
         <style jsx>{`
+          @keyframes wave {
+            0% {
+              transform: rotate(0deg);
+            }
+            15% {
+              transform: rotate(15deg);
+            }
+            30% {
+              transform: rotate(-10deg);
+            }
+            45% {
+              transform: rotate(15deg);
+            }
+            60% {
+              transform: rotate(-10deg);
+            }
+            75% {
+              transform: rotate(15deg);
+            }
+            100% {
+              transform: rotate(0deg);
+            }
+          }
+
+          .wave-hand {
+            display: inline-block;
+            animation: wave 2s infinite;
+            transform-origin: 70% 70%;
+          }
+
           @keyframes float {
             0%,
             100% {

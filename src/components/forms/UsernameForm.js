@@ -1,52 +1,10 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { ChevronRight, User, CheckCircle, AlertCircle } from "lucide-react";
-
-// Simulamos las funciones que no están disponibles en el sandbox
-const grabUsername = async (formData) => {
-  // Simulación de verificación de username
-  const username = formData.get("username");
-  const takenUsernames = ["admin", "user", "test", "demo"];
-  await new Promise((resolve) => setTimeout(resolve, 1500)); // Simula delay de API
-  return !takenUsernames.includes(username?.toLowerCase());
-};
-
-const SubmitButton = ({ children, disabled, isLoading }) => (
-  <button
-    type="submit"
-    disabled={disabled || isLoading}
-    className={`
-      group relative w-full overflow-hidden rounded-2xl
-      bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500
-      px-8 py-4 text-white font-semibold text-lg
-      transform transition-all duration-300 ease-out
-      hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/25
-      active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed
-      disabled:transform-none
-    `}
-  >
-    {/* Glassmorphism overlay */}
-    <div className="absolute inset-0 bg-white/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-    {/* Shimmer effect */}
-    <div className="absolute inset-0 -top-2 -bottom-2 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out" />
-
-    {/* Content */}
-    <div className="relative flex items-center justify-center gap-3">
-      {isLoading ? (
-        <>
-          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-          <span>Verificando...</span>
-        </>
-      ) : (
-        <>
-          {children}
-          <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" />
-        </>
-      )}
-    </div>
-  </button>
-);
+import grabUsername from "@/actions/grabUsername";
+import SubmitButton from "../buttons/SubmitButton";
+import RightIcon from "@/components/icons/RightIcon";
+import { redirect } from "next/navigation";
 
 export default function UsernameForm({ desiredUsername = "" }) {
   // Estados del componente
@@ -89,17 +47,15 @@ export default function UsernameForm({ desiredUsername = "" }) {
 
   // Manejo del submit
   async function handleSubmit(formData) {
-    if (!isValid) return;
-
-    setIsLoading(true);
-    setTaken(false);
-
     try {
-      const result = await grabUsername(formData);
-      setTaken(!result);
+      setIsLoading(true); // si tienes loading
 
+      const result = await grabUsername(formData);
+      setTaken(result === false); // true si nombre está tomado
       if (result) {
-        // Simulamos el redirect con una animación de éxito
+        // Usuario disponible, redirigimos y mostramos alerta después
+        redirect("/account?created=" + formData.get("username"));
+
         setTimeout(() => {
           alert(
             `¡Éxito! Username "${formData.get(
@@ -109,9 +65,11 @@ export default function UsernameForm({ desiredUsername = "" }) {
           setIsLoading(false);
         }, 500);
       } else {
+        // Nombre tomado, no redirigimos y paramos loading
         setIsLoading(false);
       }
     } catch (error) {
+      // Error en la petición
       setIsLoading(false);
       setTaken(true);
     }
@@ -238,7 +196,7 @@ export default function UsernameForm({ desiredUsername = "" }) {
             {/* Error message */}
             {taken && (
               <div className="animate-slideInDown bg-red-500/20 backdrop-blur-sm border border-red-400/30 rounded-xl p-4 text-center">
-                <div className="flex items-center justify-center gap-2 text-red-200">
+                <div className="flex items-center justify-center gap-2 text-red-500">
                   <AlertCircle className="w-5 h-5" />
                   <span className="font-medium">
                     Este nombre de usuario ya está registrado

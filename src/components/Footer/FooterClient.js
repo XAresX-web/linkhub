@@ -104,7 +104,11 @@ export default function FooterClient() {
                 { href: "/about", label: "Acerca de", icon: "ℹ️" },
                 { href: "/pricing", label: "Precios", icon: "💎" },
                 { href: "/contact", label: "Contacto", icon: "📧" },
-                { href: "linkhub.info@gmx.com", label: "Ayuda", icon: "❓" },
+                {
+                  href: "mailto:linkhub.info@gmx.com",
+                  label: "Ayuda",
+                  icon: "❓",
+                },
               ].map((item) => (
                 <Link
                   key={item.href}

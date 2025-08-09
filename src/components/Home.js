@@ -62,8 +62,8 @@ export default function Home({ session }) {
                     </span>
                   </h2>
 
-                  {/* Decorative line */}
-                  <div className="absolute -bottom-2 left-0 w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full opacity-60 animate-pulse"></div>
+                  {/* Decorative line centrada */}
+                  <div className="absolute -bottom-2 left-1/2 w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full opacity-60 animate-pulse transform -translate-x-1/2"></div>
                 </div>
               </div>
 

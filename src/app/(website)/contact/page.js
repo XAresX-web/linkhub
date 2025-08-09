@@ -252,17 +252,28 @@ export default function Contact() {
                   </button>
 
                   {/* Cambia la URL por la de tu Google Form */}
-                  <iframe
-                    src="<iframe src=https://docs.google.com/forms/d/e/1FAIpQLSe9zAcUx-5Ooz2d_zdwTPg7Jdt2nCsojLw4xIXZjVPXHxI-iQ/viewform?embedded=true"
-                    width="100"
-                    height="600"
-                    frameborder="0"
-                    marginheight="0"
-                    marginwidth="0"
-                    title="Formulario de Contacto"
+                  <div
+                    style={{
+                      position: "relative",
+                      paddingBottom: "150%",
+                      height: 0,
+                      overflow: "hidden",
+                    }}
                   >
-                    Cargando…
-                  </iframe>
+                    <iframe
+                      src="https://docs.google.com/forms/d/e/1FAIpQLSe9zAcUx-5Ooz2d_zdwTPg7Jdt2nCsojLw4xIXZjVPXHxI-iQ/viewform?embedded=true"
+                      title="Formulario de Contacto"
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        border: "none",
+                      }}
+                      allowFullScreen
+                    ></iframe>
+                  </div>
                 </div>
               </div>
             )}

@@ -19,6 +19,7 @@
     "clone-deep": "^4.0.1",
     "cloudinary": "^2.7.0",
     "date-fns": "^2.30.0",
+    "lucide-react": "^0.539.0",
     "mongodb": "^6.18.0",
     "mongoose": "^8.0.1",
     "next": "14.0.2",

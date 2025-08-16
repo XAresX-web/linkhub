@@ -169,7 +169,7 @@ export default function Pricing() {
           <div className="text-center mt-16 animate-fade-in-up delay-500">
             <p className="text-gray-400 mb-4">¿Necesitas más funciones?</p>
             <a
-              href="mailto:linkhub.info@gmx.com"
+              href="mailto:hellolinkhub@outlook.com"
               className="text-pink-400 hover:text-pink-300 font-medium transition-colors underline decoration-pink-400/30 hover:decoration-pink-300/50 cursor-pointer inline-block"
             >
               Contáctanos para atención personalizada →

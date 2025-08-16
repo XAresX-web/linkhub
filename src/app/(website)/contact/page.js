@@ -221,7 +221,7 @@ export default function Contact() {
                     <div className="space-y-3">
                       <div className="flex items-center space-x-3 text-sm text-slate-300">
                         <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                        <span>Email: linkhub.info@gmx.com</span>
+                        <span>Email: hellolinkhub@outlook.com</span>
                       </div>
                       <div className="flex items-center space-x-3 text-sm text-slate-300">
                         <span className="w-2 h-2 bg-blue-400 rounded-full"></span>

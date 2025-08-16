@@ -14,7 +14,7 @@ export default function FooterClient() {
       alert("Por favor ingresa un email válido.");
       return;
     }
-    window.location.href = `mailto:linkhub.info@gmx.com?subject=Suscripción&body=Hola, me gustaría suscribirme con este correo: ${email}`;
+    window.location.href = `mailto:hellolinkhub@outlook.com?subject=Suscripción&body=Hola, me gustaría suscribirme con este correo: ${email}`;
   };
   return (
     <footer className="relative mt-0 overflow-hidden">
@@ -105,7 +105,7 @@ export default function FooterClient() {
                 { href: "/pricing", label: "Precios", icon: "💎" },
                 { href: "/contact", label: "Contacto", icon: "📧" },
                 {
-                  href: "mailto:linkhub.info@gmx.com",
+                  href: "mailto:hellolinkhub@outlook.com",
                   label: "Ayuda",
                   icon: "❓",
                 },
